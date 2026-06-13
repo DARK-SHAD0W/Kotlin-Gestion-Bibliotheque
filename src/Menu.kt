@@ -11,6 +11,7 @@ fun lancerMenu() {
         println("\n  1. Lancer les tests de succès")
         println("  2. Lancer les tests d'erreurs")
         println("  3. Gérer la bibliothèque")
+        println("  4. Simulation complète automatique")
         println("  0. Quitter")
         print("\nVotre choix : ")
 
@@ -18,6 +19,7 @@ fun lancerMenu() {
             "1" -> testerSucces()
             "2" -> testerErreurs()
             "3" -> menuBibliotheque(bibliotheque)
+            "4" -> simulationComplete()
             "0" -> { println("\nAu revoir !"); return }
             else -> println("Choix invalide, veuillez réessayer.")
         }
