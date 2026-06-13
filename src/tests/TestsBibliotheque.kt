@@ -1,3 +1,5 @@
+package tests
+
 import modeles.*
 
 // Tests de validation des cas limites et de la gestion des erreurs
@@ -26,7 +28,7 @@ fun testerCasErreurs() {
     println("\n-- Test 4 : tenter de consulter un DVD sur place --")
     bibliotheque.consulter(dvd)
 
-    // Test 5 : afficher les emprunts quand la liste est vide
+    // Test 5 : afficher les emprunts quand la liste est vide après retour
     println("\n-- Test 5 : afficher les emprunts après retour de tous les médias --")
     bibliotheque.retourner(dvd)
     bibliotheque.afficherEmprunts()
