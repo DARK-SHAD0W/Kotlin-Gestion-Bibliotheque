@@ -37,7 +37,8 @@ Kotlin-Gestion-Bibliotheque/
     │   └── TestErreurs.kt          # tests des cas limites et erreurs
     ├── Bibliotheque.kt             # couche accès aux données
     ├── InitData.kt                 # données initiales variées
-    └── Main.kt                     # point d'entrée : init → simulation → tests
+    ├── Menu.kt                     # menus interactifs (lancerMenu, sous-menus)
+    └── Main.kt                     # point d'entrée : appel de lancerMenu()
 ```
 
 ## Lancer le projet
@@ -59,115 +60,11 @@ Kotlin-Gestion-Bibliotheque/
 - `InitData.kt` : bibliothèque pré-remplie avec des médias variés (FR/EN/international)
 - `tests/TestSucces.kt` : 12 tests couvrant tous les cas nominaux
 - `tests/TestErreurs.kt` : 6 tests couvrant tous les cas limites et comportements invalides
+- `Menu.kt` : menu interactif entièrement numérique — ajout, consultation, emprunt, retour et affichage avec sélection du type puis de l'item
 
 ## Diagramme de classes
 
 ![Diagramme de classes](digramme_classe.png)
-
-Code Mermaid pour générer le diagramme (via [mermaid.live](https://mermaid.live)) :
-
-```mermaid
-classDiagram
-    direction TB
-
-    class Bibliotheque {
-        -medias : MutableList~Media~
-        -emprunts : MutableList~Media~
-        +ajouterMedia(media : Media) void
-        +emprunter(media : Media) void
-        +retourner(media : Media) void
-        +consulter(media : Media) void
-        +afficherEmprunts() void
-    }
-
-    class Media {
-        <<abstract>>
-        +titre : String
-        +dateDeParution : String
-        +afficher() void
-    }
-
-    class Livre {
-        +auteur : String
-        +editeur : String
-        -estEmprunte : Boolean
-        +emprunter() Boolean
-        +retourner() Boolean
-        +consulter() void
-        +afficher() void
-    }
-
-    class Magazine {
-        +numero : String
-        +consulter() void
-        +afficher() void
-    }
-
-    class Journal {
-        +consulter() void
-        +afficher() void
-    }
-
-    class EnregistrementAudio {
-        +duree : Int
-        +genre : String
-        -estEmprunte : Boolean
-        +emprunter() Boolean
-        +retourner() Boolean
-        +afficher() void
-    }
-
-    class DVD {
-        +duree : Int
-        +genre : String
-        -estEmprunte : Boolean
-        +emprunter() Boolean
-        +retourner() Boolean
-        +afficher() void
-    }
-
-    class Empruntable {
-        <<interface>>
-        +emprunter() Boolean
-        +retourner() Boolean
-    }
-
-    class Consultable {
-        <<interface>>
-        +consulter() void
-    }
-
-    Bibliotheque "1" *-- "0..*" Media : contient
-
-    Media <|-- Livre
-    Media <|-- Magazine
-    Media <|-- Journal
-    Media <|-- EnregistrementAudio
-    Media <|-- DVD
-
-    Livre ..|> Empruntable
-    EnregistrementAudio ..|> Empruntable
-    DVD ..|> Empruntable
-
-    Livre ..|> Consultable
-    Magazine ..|> Consultable
-    Journal ..|> Consultable
-
-    classDef abstractClass fill:#FFD166,stroke:#EF8C00,color:#000000
-    classDef interfaceClass fill:#06D6A0,stroke:#028A5B,color:#000000
-    classDef concreteClass fill:#118AB2,stroke:#073B4C,color:#ffffff
-    classDef serviceClass fill:#EF476F,stroke:#B30026,color:#ffffff
-
-    class Media abstractClass
-    class Livre concreteClass
-    class Magazine concreteClass
-    class Journal concreteClass
-    class EnregistrementAudio concreteClass
-    class DVD concreteClass
-    class Empruntable interfaceClass
-    class Consultable interfaceClass
-    class Bibliotheque serviceClass
-```
 
 ## Exécution
 
@@ -182,6 +79,7 @@ classDiagram
 - **`MutableList<Media>`** : stockage polymorphe (S6) permettant d'appeler `afficher()` via polymorphisme sans connaître le type exact
 - **`InitData.kt` séparé** : sépare les données de test de la logique métier pour faciliter la réutilisation et la lisibilité
 - **`TestSucces.kt` / `TestErreurs.kt` séparés** : distingue clairement les tests nominaux des tests de robustesse
+- **`Menu.kt` séparé** : isole toute la logique d'interaction utilisateur hors de `Main.kt` ; `filterIsInstance<T>()` (S6) permet de filtrer les médias par type pour afficher uniquement les choix pertinents à chaque étape
 
 ## Difficultés rencontrées
 

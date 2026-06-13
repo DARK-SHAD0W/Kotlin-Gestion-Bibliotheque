@@ -56,4 +56,7 @@ class Bibliotheque {
         }
         emprunts.forEach { it.afficher() }
     }
+
+    fun getMedias(): List<Media> = medias.toList()
+    fun getEmprunts(): List<Media> = emprunts.toList()
 }
