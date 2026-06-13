@@ -36,8 +36,9 @@ Kotlin-Gestion-Bibliotheque/
     │   ├── TestSucces.kt           # tests des cas nominaux
     │   └── TestErreurs.kt          # tests des cas limites et erreurs
     ├── Bibliotheque.kt             # couche accès aux données
-    ├── InitData.kt                 # données initiales variées
+    ├── InitData.kt                 # données initiales variées (36 médias)
     ├── Menu.kt                     # menus interactifs (lancerMenu, sous-menus)
+    ├── Simulation.kt               # simulation complète automatique (12 étapes)
     └── Main.kt                     # point d'entrée : appel de lancerMenu()
 ```
 
