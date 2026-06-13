@@ -62,7 +62,7 @@ Kotlin-Gestion-Bibliotheque/
 
 ## Diagramme de classes
 
-![Diagramme de classes](diagramme_classe.png)
+![Diagramme de classes](digramme_classe.png)
 
 Code Mermaid pour générer le diagramme (via [mermaid.live](https://mermaid.live)) :
 
@@ -70,22 +70,21 @@ Code Mermaid pour générer le diagramme (via [mermaid.live](https://mermaid.liv
 classDiagram
     direction TB
 
+    class Bibliotheque {
+        -medias : MutableList~Media~
+        -emprunts : MutableList~Media~
+        +ajouterMedia(media : Media) void
+        +emprunter(media : Media) void
+        +retourner(media : Media) void
+        +consulter(media : Media) void
+        +afficherEmprunts() void
+    }
+
     class Media {
         <<abstract>>
         +titre : String
         +dateDeParution : String
         +afficher() void
-    }
-
-    class Empruntable {
-        <<interface>>
-        +emprunter() Boolean
-        +retourner() Boolean
-    }
-
-    class Consultable {
-        <<interface>>
-        +consulter() void
     }
 
     class Livre {
@@ -127,15 +126,18 @@ classDiagram
         +afficher() void
     }
 
-    class Bibliotheque {
-        -medias : MutableList~Media~
-        -emprunts : MutableList~Media~
-        +ajouterMedia(media : Media) void
-        +emprunter(media : Media) void
-        +retourner(media : Media) void
-        +consulter(media : Media) void
-        +afficherEmprunts() void
+    class Empruntable {
+        <<interface>>
+        +emprunter() Boolean
+        +retourner() Boolean
     }
+
+    class Consultable {
+        <<interface>>
+        +consulter() void
+    }
+
+    Bibliotheque "1" *-- "0..*" Media : contient
 
     Media <|-- Livre
     Media <|-- Magazine
@@ -143,15 +145,28 @@ classDiagram
     Media <|-- EnregistrementAudio
     Media <|-- DVD
 
-    Empruntable <|.. Livre
-    Empruntable <|.. EnregistrementAudio
-    Empruntable <|.. DVD
+    Livre ..|> Empruntable
+    EnregistrementAudio ..|> Empruntable
+    DVD ..|> Empruntable
 
-    Consultable <|.. Livre
-    Consultable <|.. Magazine
-    Consultable <|.. Journal
+    Livre ..|> Consultable
+    Magazine ..|> Consultable
+    Journal ..|> Consultable
 
-    Bibliotheque "1" *-- "0..*" Media : contient
+    classDef abstractClass fill:#FFD166,stroke:#EF8C00,color:#000000
+    classDef interfaceClass fill:#06D6A0,stroke:#028A5B,color:#000000
+    classDef concreteClass fill:#118AB2,stroke:#073B4C,color:#ffffff
+    classDef serviceClass fill:#EF476F,stroke:#B30026,color:#ffffff
+
+    class Media abstractClass
+    class Livre concreteClass
+    class Magazine concreteClass
+    class Journal concreteClass
+    class EnregistrementAudio concreteClass
+    class DVD concreteClass
+    class Empruntable interfaceClass
+    class Consultable interfaceClass
+    class Bibliotheque serviceClass
 ```
 
 ## Exécution
