@@ -24,4 +24,7 @@ fun main() {
     bibliotheque.retourner(dvd)
     bibliotheque.retourner(livre)
     bibliotheque.afficherEmprunts()
+
+    // Tests de validation des cas limites
+    testerCasErreurs()
 }
