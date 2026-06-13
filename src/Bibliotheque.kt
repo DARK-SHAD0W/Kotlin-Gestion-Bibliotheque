@@ -22,18 +22,18 @@ class Bibliotheque {
             println("'${media.titre}' est déjà en cours d'emprunt.")
             return
         }
-        if ((media as Empruntable).emprunter()) {
+        if (media.emprunter()) {
             emprunts.add(media)
         }
     }
 
-    // Tente de retourner un média : vérifie qu'il est bien emprunté
+    // Tente de retourner un média : vérifie qu'il est bien en cours d'emprunt
     fun retourner(media: Media) {
         if (media !in emprunts) {
             println("'${media.titre}' n'est pas en cours d'emprunt.")
             return
         }
-        if ((media as Empruntable).retourner()) {
+        if (media is Empruntable && media.retourner()) {
             emprunts.remove(media)
         }
     }
@@ -44,7 +44,7 @@ class Bibliotheque {
             println("'${media.titre}' ne peut pas être consulté sur place.")
             return
         }
-        (media as Consultable).consulter()
+        media.consulter()
     }
 
     // Affiche tous les médias actuellement empruntés

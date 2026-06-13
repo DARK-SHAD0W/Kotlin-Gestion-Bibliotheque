@@ -1,8 +1,6 @@
 import modeles.*
-import tests.testerSucces
-import tests.testerErreurs
 
-// Point d'entrée : init → simulation PDF → tests de succès → tests d'erreurs
+// Point d'entrée : simulation PDF → bibliothèque complète → tests de succès → tests d'erreurs
 fun main() {
 
     // 1. Simulation exacte du résultat attendu (PDF)
@@ -27,7 +25,7 @@ fun main() {
     bibliotheque.retourner(livre)
     bibliotheque.afficherEmprunts()
 
-    // 2. Initialisation de la bibliothèque complète avec données variées
+    // 2. Bibliothèque complète avec données variées
     println("\n=== BIBLIOTHÈQUE COMPLÈTE (initData) ===")
     val bibliothequeComplete = initData()
 

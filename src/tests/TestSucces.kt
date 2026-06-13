@@ -1,5 +1,3 @@
-package tests
-
 import modeles.*
 
 // Tests couvrant tous les cas de succès des opérations de la bibliothèque

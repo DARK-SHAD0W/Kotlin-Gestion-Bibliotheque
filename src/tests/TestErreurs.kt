@@ -1,5 +1,3 @@
-package tests
-
 import modeles.*
 
 // Tests couvrant tous les cas d'erreur et limites de la bibliothèque
@@ -40,7 +38,7 @@ fun testerErreurs() {
     bibliotheque.consulter(audio)
 
     // Test 6 : retourner le même média deux fois
-    println("\n-- Test 6 : retourner le DVD deux fois --")
+    println("\n-- Test 6 : retourner le DVD deux fois de suite --")
     bibliotheque.retourner(dvd)
     bibliotheque.retourner(dvd)
 
