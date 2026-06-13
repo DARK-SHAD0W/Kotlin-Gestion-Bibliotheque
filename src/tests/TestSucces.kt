@@ -20,14 +20,17 @@ fun testerSucces() {
 
     // Test 1 : emprunter un livre avec succès
     println("-- Test 1 : emprunter un livre --")
+    livre.afficher()
     bibliotheque.emprunter(livre)
 
     // Test 2 : emprunter un DVD avec succès
     println("\n-- Test 2 : emprunter un DVD --")
+    dvd.afficher()
     bibliotheque.emprunter(dvd)
 
     // Test 3 : emprunter un enregistrement audio avec succès
     println("\n-- Test 3 : emprunter un enregistrement audio --")
+    audio.afficher()
     bibliotheque.emprunter(audio)
 
     // Test 4 : afficher les emprunts en cours (3 médias)
@@ -36,22 +39,27 @@ fun testerSucces() {
 
     // Test 5 : consulter un magazine sur place
     println("\n-- Test 5 : consulter un magazine sur place --")
+    magazine.afficher()
     bibliotheque.consulter(magazine)
 
     // Test 6 : consulter un journal sur place
     println("\n-- Test 6 : consulter un journal sur place --")
+    journal.afficher()
     bibliotheque.consulter(journal)
 
     // Test 7 : consulter un livre (Empruntable ET Consultable)
     println("\n-- Test 7 : consulter un livre sur place --")
+    livre.afficher()
     bibliotheque.consulter(livre)
 
     // Test 8 : retourner un livre avec succès
     println("\n-- Test 8 : retourner un livre --")
+    livre.afficher()
     bibliotheque.retourner(livre)
 
     // Test 9 : retourner un DVD avec succès
     println("\n-- Test 9 : retourner un DVD --")
+    dvd.afficher()
     bibliotheque.retourner(dvd)
 
     // Test 10 : afficher les emprunts après retours partiels (1 restant)
@@ -60,6 +68,7 @@ fun testerSucces() {
 
     // Test 11 : retourner le dernier média emprunté
     println("\n-- Test 11 : retourner le dernier média emprunté --")
+    audio.afficher()
     bibliotheque.retourner(audio)
 
     // Test 12 : afficher les emprunts quand la liste est vide
